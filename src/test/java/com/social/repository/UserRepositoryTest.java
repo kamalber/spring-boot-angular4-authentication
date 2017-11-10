@@ -1,4 +1,4 @@
-package com.social.service;
+package com.social.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.social.dao.UserRepository;
 import com.social.entities.User;
 import com.social.services.UserService;
 
@@ -20,12 +21,12 @@ import com.social.services.UserService;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class UserServiceTest {
+public class UserRepositoryTest {
 
 	@Autowired
 	private TestEntityManager entityManager;
 	@Autowired
-	private UserService userService;
+	private UserRepository userRepository;
 
 	@Test
 	public void testSave() {
@@ -36,7 +37,7 @@ public class UserServiceTest {
 		entityManager.persist(user);
 		entityManager.flush();
 		// when
-		User testUser = userService.find(user.getId());
+		User testUser = userRepository.findOne(user.getId());
 		// then
 		assertThat(testUser.getFullName()).isEqualTo(user.getFullName());
 	}
