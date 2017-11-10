@@ -44,19 +44,19 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-				// starts authorizing configurations
-				.authorizeRequests()
-				// .antMatchers("/user/**").hasRole("USER")
-				// antMatchers("/api").authenticated()
-				// authenticate all remaining URLS
-				.anyRequest().fullyAuthenticated().and()
-				// enabling the basic authentication
-				.httpBasic().and()
-				// configuring the session as state less. Which means there is
-				// no session in the server
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				// disabling the CSRF - Cross Site Request Forgery
-				.csrf().disable();
+		// starts authorizing configurations
+		.authorizeRequests()
+		// ignoring "/register"
+		.antMatchers("/account/register").permitAll()
+		// authenticate all remaining URLS
+		.anyRequest().fullyAuthenticated().and()
+		// enabling the basic authentication
+		.httpBasic().and()
+		// configuring the session as state less. Which means there is
+		// no session in the server
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+		// disabling the CSRF - Cross Site Request Forgery
+		.csrf().disable();
 	}
 
 }
