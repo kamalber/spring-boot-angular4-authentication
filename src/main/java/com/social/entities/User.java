@@ -128,5 +128,11 @@ public  class User implements UserDetails{
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
+
+	public Long getId() {
+		return id;
+	}
+	
+	
 	
 }
