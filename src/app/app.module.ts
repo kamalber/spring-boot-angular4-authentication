@@ -5,6 +5,12 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from "./services/auth.service";
+import {HttpModule} from "@angular/http";
+import {AccountService} from "./services/account.service";
+
+
 
 
 @NgModule({
@@ -14,9 +20,9 @@ import { RegisterComponent } from './components/register/register.component';
     RegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,HttpModule,FormsModule
   ],
-  providers: [],
+  providers: [AuthService,AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
