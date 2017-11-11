@@ -2,7 +2,6 @@ package com.social.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -47,7 +46,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		// starts authorizing configurations
 		.authorizeRequests()
 		// ignoring "/register"
-		.antMatchers("/account/register").permitAll()
+		.antMatchers("/account/register","/account/login").permitAll()
 		// authenticate all remaining URLS
 		.anyRequest().fullyAuthenticated().and()
 		// enabling the basic authentication
