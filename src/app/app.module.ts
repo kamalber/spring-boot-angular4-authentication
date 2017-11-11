@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from "./services/auth.service";
 import {HttpModule} from "@angular/http";
 import {AccountService} from "./services/account.service";
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -17,7 +18,8 @@ import {AccountService} from "./services/account.service";
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,HttpModule,FormsModule
