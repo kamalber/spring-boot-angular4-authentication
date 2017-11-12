@@ -10,8 +10,7 @@ import { AuthService } from "./services/auth.service";
 import {HttpModule} from "@angular/http";
 import {AccountService} from "./services/account.service";
 import { ProfileComponent } from './components/profile/profile.component';
-
-
+import {routing} from "./app.routing";
 
 
 @NgModule({
@@ -19,10 +18,11 @@ import { ProfileComponent } from './components/profile/profile.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+
   ],
   imports: [
-    BrowserModule,HttpModule,FormsModule
+    BrowserModule,HttpModule,FormsModule,routing
   ],
   providers: [AuthService,AccountService],
   bootstrap: [AppComponent]
