@@ -42,12 +42,19 @@ public class AccountController {
 		return new ResponseEntity<User>(userService.save(newUser), HttpStatus.CREATED);
 	}
 
-	
+	// this is the login api/service
 	@CrossOrigin
 	@RequestMapping("/login")
 	public Principal user(Principal principal) {
 		logger.info("user logged "+principal);
 		return principal;
+	}
+
+	// getting the connected user for test 
+	@RequestMapping(value = "/connected", method = RequestMethod.GET)
+	ResponseEntity<?> getConnected() {
+		User u=(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return new ResponseEntity<User>(u, HttpStatus.CREATED);
 	}
 	
 	
