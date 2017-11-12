@@ -27,4 +27,13 @@ export class AuthService {
       }
     });
   }
+
+  logOut() {
+    // remove user from local storage to log user out
+    return this.http.post("http://localhost:8080/logout",{})
+      .map((response: Response) => {
+        localStorage.removeItem('currentUser');
+      });
+
+  }
 }
