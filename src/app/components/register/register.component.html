@@ -10,14 +10,32 @@
       <div *ngIf="f.submitted && !fullName.valid" class="help-block">First Name is required</div>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-      <label for="username">Username</label>
+      <label for="username">Email Address</label>
       <input type="text" class="form-control" name="username" id="username" pattern="[^ @]*@[^ @]*" [(ngModel)]="user.username" #username="ngModel" required />
-      <div *ngIf="f.submitted && !username.valid" class="help-block">a valid email is required</div>
+      <div *ngIf="f.submitted && !username.valid" class="help-block">
+
+        <div *ngIf="username.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="username.errors.pattern">
+          A valid email address is required
+        </div>
+
+      </div>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
       <label for="password">Password</label>
-      <input type="password" class="form-control" name="password" id="password"[(ngModel)]="user.password" #password="ngModel" required />
-      <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      <input type="password" class="form-control" name="password" id="password"[(ngModel)]="user.password" #password="ngModel" required minlength="4" />
+      <div *ngIf="f.submitted && !password.valid" class="help-block">
+
+        <div *ngIf="password.errors.required">
+          password is required.
+        </div>
+        <div *ngIf="password.errors.minlength">
+          password must be at least 4 characters long.
+        </div>
+
+      </div>
     </div>
     <div class="form-group">
        <button  class="btn btn-primary">Register</button>
