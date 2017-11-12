@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.logIn(this.user)
       .subscribe(data=>{
-          console.log("is user connected : "+data.authenticated, " username :  "+data.principal.username);
+       // console.log("is user connected : "+data.authenticated, " username :  "+data.principal.username);
+
         },err=>{
           console.log("login error");
         }
