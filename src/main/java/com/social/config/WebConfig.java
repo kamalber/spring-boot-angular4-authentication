@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * @author kamal berriga
@@ -20,6 +21,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	AppUserDetailsService appUserDetailsService;
+	@Autowired
+    private HttpLogoutSuccessHandler logoutSuccessHandler;
 
 	// This method is for overriding the default AuthenticationManagerBuilder.
 	// We can specify how the user details are kept in the application. It may
@@ -29,7 +32,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(appUserDetailsService);
 	}
 
-
+	
 	// This method is for overriding some configuration of the WebSecurity
 	// If you want to ignore some request or request patterns then you can
 	// specify that inside this method
@@ -46,9 +49,13 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		// starts authorizing configurations
 		.authorizeRequests()
 		// ignoring "/register"
-		.antMatchers("/account/register","/account/login").permitAll()
+		.antMatchers("/account/register","/account/login","/logout").permitAll()
 		// authenticate all remaining URLS
 		.anyRequest().fullyAuthenticated().and()
+		.logout()
+        .permitAll()
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
+        .logoutSuccessHandler(logoutSuccessHandler).and()
 		// enabling the basic authentication
 		.httpBasic().and()
 		// configuring the session as state less. Which means there is
