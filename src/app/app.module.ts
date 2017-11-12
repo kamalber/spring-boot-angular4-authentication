@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {routing} from "./app.routing";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
