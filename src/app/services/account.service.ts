@@ -4,7 +4,6 @@ import {Http} from "@angular/http";
 
 @Injectable()
 export class AccountService {
-
   constructor(public http: Http) { }
 
   createAccount(user:User){
