@@ -2,6 +2,7 @@ package com.social.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -9,6 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * @author kamal berriga
@@ -32,7 +37,18 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(appUserDetailsService);
 	}
 
-	
+	// this configuration allow the client app to access the this api 
+	// all the domain that consume this api must be included in the allowed o'rings 
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+	    return new WebMvcConfigurerAdapter() {
+	        @Override
+	        public void addCorsMappings(CorsRegistry registry) {
+	            registry.addMapping("/**").allowedOrigins("http://localhost:4200");
+	          
+	        }
+	    };
+	}
 	// This method is for overriding some configuration of the WebSecurity
 	// If you want to ignore some request or request patterns then you can
 	// specify that inside this method
@@ -45,13 +61,15 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 	// We can specify our authorization criteria inside this method.
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
+		http.cors().and()
 		// starts authorizing configurations
 		.authorizeRequests()
-		// ignoring "/register"
-		.antMatchers("/account/register","/account/login","/logout").permitAll()
+		// ignoring the guest's urls "
+		.antMatchers("/account/**","/account/login","/logout").permitAll()
 		// authenticate all remaining URLS
 		.anyRequest().fullyAuthenticated().and()
+      /* "/logout" will log the user out by invalidating the HTTP Session,
+       * cleaning up any {link rememberMe()} authentication that was configured, */
 		.logout()
         .permitAll()
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
