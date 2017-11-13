@@ -22,9 +22,11 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
+    "angular4-social-login": "^1.0.13",
     "boostrap": "^2.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "ngx-facebook": "^2.4.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
