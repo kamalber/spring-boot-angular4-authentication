@@ -13,7 +13,7 @@ This project is based on the [Spring Boot](http://projects.spring.io/spring-boot
 The project is created with Maven, so you just need to import it to your IDE(Eclipse,..) and build the project to resolve the dependencies
 
 ## Database configuration 
-Create a MySQL database with the name `springbootdb`and add the credentials to `/resources/application.properties`.  
+Create a MySQL database with the name `spring_auth`and add the credentials to `/resources/application.properties`.  
 The default ones are :
 
 ```
