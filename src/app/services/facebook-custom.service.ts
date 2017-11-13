@@ -33,8 +33,12 @@ login(){
   getUserAlbums(){
     console.log("uuu"+ this.user.id);
     this.fb.api('/'+this.user.id+'/albums').then((response) => {
-console.log(response);
+    console.log(response);
     }).catch((error: any) => console.error(error));
   }
-
+logOut() {
+  this.fb.logout().then(() => {
+    localStorage.removeItem('currentUserFB');
+  });
+}
 }
