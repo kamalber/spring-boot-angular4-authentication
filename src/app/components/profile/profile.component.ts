@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import { LoginResponse} from "ngx-facebook";
 import {FacebookCustomService} from "../../services/facebook-custom.service";
 import {FacebookUser} from "../../model/mode.FacebookUser";
+import {Album} from "../../model/model.album";
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,8 @@ import {FacebookUser} from "../../model/mode.FacebookUser";
 export class ProfileComponent implements OnInit {
   currentUser: User;
   currentFbUser: FacebookUser;
-  public albumsList:any;
+   albumsList:Array<Album>= new Array();
+
   constructor(public authService: AuthService,public router:Router,private facebookService: FacebookCustomService) {
     this.currentUser=JSON.parse(localStorage.getItem('currentUser'));
     this.currentFbUser=JSON.parse(localStorage.getItem('currentUserFB'));
@@ -29,15 +31,28 @@ export class ProfileComponent implements OnInit {
 loginWithFacebook(){
   this.facebookService.login();
 }
-// getting the albums list
+// retrieving the connected User's albums
 getAlbums(){
   this.facebookService.getUserAlbums().then((ress) => {
-    this.albumsList=ress.data;
-    console.log(ress);
+    let albums = ress.data;
+    console.log(albums);
+    //Crossing the data in order to get the albums informations
+    for (var i = 0; i < albums.length; i++) {
+     let loadedAlbum:Album=new Album();
+     loadedAlbum.id=albums[i].id;
+     loadedAlbum.name=albums[i].name;
+     loadedAlbum.created_time=albums[i].created_time;
+      console.log(this.albumsList);
+     this.facebookService.getLambumsCoverPhotoPicture(albums[i].cover_photo.id).then((ress) => {
+      loadedAlbum.picture=ress.picture;
+      this.albumsList.push(loadedAlbum);
+    }).catch((error: any) => console.error(error));
+    }
   }).catch((error: any) => console.error(error));
 }
-  logOut() {
 
+// loggin out from the app
+  logOut() {
     this.authService.logOut()
       .subscribe(
         data => {
