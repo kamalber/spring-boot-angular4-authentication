@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.social.dao.UserRepository;
 import com.social.entities.User;
-
+/** 
+ * @author kamal berriga
+ *
+ */
 @Service
 public class UserService {
 

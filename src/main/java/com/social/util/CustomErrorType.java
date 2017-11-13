@@ -1,5 +1,8 @@
 package com.social.util;
-
+/** 
+ * @author kamal berriga
+ *
+ */
 public class CustomErrorType {
 
     private String errorMessage;

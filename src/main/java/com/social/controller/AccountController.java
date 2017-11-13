@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.social.services.UserService;
 import com.social.util.CustomErrorType;
 import com.social.entities.User;
-
+/** 
+ * @author kamal berriga
+ *
+ */
 @RestController
 @RequestMapping("account")
 public class AccountController {
@@ -27,7 +29,7 @@ public class AccountController {
 	@Autowired
 	private UserService userService;
 
-	// this is function to create a new account by a guest 
+	// request method to create a new account by a guest
 	@CrossOrigin
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<?> createUser(@RequestBody User newUser) {
@@ -50,12 +52,6 @@ public class AccountController {
 		return principal;
 	}
 
-	// getting the connected user for test 
-	@RequestMapping(value = "/connected", method = RequestMethod.GET)
-	ResponseEntity<?> getConnected() {
-		User u=(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return new ResponseEntity<User>(u, HttpStatus.CREATED);
-	}
 	
 	
 }
