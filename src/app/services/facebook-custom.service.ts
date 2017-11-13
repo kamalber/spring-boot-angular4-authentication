@@ -19,22 +19,20 @@ login(){
   this.fb.login()
  .then((response: LoginResponse) =>{
    //getting some user info , the user_id is the most importent
-  this.fb.api('/me?fields=name,email,picture,first_name,last_name').then((response) => {
-
+  this.fb.api('/me?fields=name,id,email,picture,first_name,last_name').then((response) => {
     this.user.id = response.id;
     this.user.fullName = response.firstName+ " "+response.lastName;
     this.user.photoUrl = "https://graph.facebook.com/" + response.id + "/picture?type=normal";
     localStorage.setItem("currentUserFB",JSON.stringify(this.user));
-    console.log("uuu"+ this.user.id);
   }).catch((error: any) => console.error(error));
   }).catch((error: any) => console.error(error));
 
 }
+
+// load the user albums
   getUserAlbums(){
-    console.log("uuu"+ this.user.id);
-    this.fb.api('/'+this.user.id+'/albums').then((response) => {
-    console.log(response);
-    }).catch((error: any) => console.error(error));
+  console.log('/'+this.user.id+'/albums');
+    return this.fb.api('/'+this.user.id+'/albums?fields=created_time,cover_photo,name');
   }
 logOut() {
   this.fb.logout().then(() => {

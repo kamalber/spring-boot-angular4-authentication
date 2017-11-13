@@ -1,2 +1,62 @@
 
-hi {{currentUser.username}}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Jumbotron Header -->
+  <header class="jumbotron my-4">
+    <h1 class="display-3">  <strong>{{currentUser.fullName}}</strong>, Welcome to your app </h1>
+    <p class="lead">connect your facebook account so that you can load your photos from all albums and export them to cloud <br>
+      your data is safe and secured we put our focus on security first , so don't worry
+    </p>
+    <button *ngIf="currentFbUser" class="loginBtn loginBtn--facebook" (click)="loginWithFacebook()">
+      Connect Facebook
+    </button>
+
+    <button *ngIf="currentFbUser" class="loginBtn loginBtn--facebook" (click)="getAlbums()">
+      Load my Albums
+    </button>
+  </header>
+  <button class="btn btn-danger" (click)="logOut()">
+    log out
+  </button>
+</div>
+
+<div class="container">
+  <div class="well well-sm">
+    <strong>Display</strong>
+    <div class="btn-group">
+      <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+      class="glyphicon glyphicon-th"></span>Grid</a>
+    </div>
+  </div>
+  <div id="products" class="row list-group">
+    <div class="item  col-xs-4 col-lg-4" *ngFor="let item of albumsList">
+      <div class="thumbnail">
+        <img class="group list-group-image" src="https://graph.facebook.com/v2.11/{{item.cover_photo.id}}?access_token=EAAbApOAVXFABADQw1tRSybb1XdJeSCakZAEqsZCSffsQ5NTjbZAqEIrwLzJPrimPU95YnB0kr9MWPIlJxBgBuAkAtIQrrCiedLNvVMCkx3ZBJRQwTnsv6btRuRZCj3QqwmIGnfygsdh2CBq0KZB9UvnaZCDtlEBA7baz0JvCHkMW1J5yn49NOe7gAGKCWBnI46xNmjcYO7JvgZDZD&debug=all&format=json&method=get&pretty=0&suppress_http_code=1"
+             alt="" />
+        <div class="caption">
+          <h4 class="group inner list-group-item-heading">
+            {{item.name}}</h4>
+          <p class="group inner list-group-item-text">
+            {{item.created_time}}
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <p class="lead">
+                $21.000</p>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
