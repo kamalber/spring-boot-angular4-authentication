@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {routing} from "./app.routing";
 import {FacebookModule} from "ngx-facebook";
 import {FacebookCustomService} from "./services/facebook-custom.service";
+import {UrlPermission} from "./urlPermission/url.permission";
 
 
 
@@ -23,11 +24,12 @@ import {FacebookCustomService} from "./services/facebook-custom.service";
     RegisterComponent,
     ProfileComponent,
 
+
   ],
   imports: [
-    BrowserModule,HttpModule,FormsModule,routing, FacebookModule.forRoot()
+    BrowserModule,HttpModule,FormsModule,routing, FacebookModule.forRoot(),
   ],
-  providers: [AuthService,AccountService,FacebookCustomService],
+  providers: [AuthService,AccountService,FacebookCustomService,UrlPermission],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
