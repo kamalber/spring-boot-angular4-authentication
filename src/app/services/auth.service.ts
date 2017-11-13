@@ -19,8 +19,6 @@ export class AuthService {
       .map((response: Response) => {
       // login successful if there's a jwt token in the response
       let user = response.json().principal;// the returned user object is a principal object
-      console.log(user);
-      console.log(JSON.stringify(user));
       if (user) {
         // store user details  in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
