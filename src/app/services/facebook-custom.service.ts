@@ -29,11 +29,20 @@ login(){
 
 }
 
-// load the user albums
+
+
+// load all user albums
   getUserAlbums(){
   console.log('/'+this.user.id+'/albums');
     return this.fb.api('/'+this.user.id+'/albums?fields=created_time,cover_photo,name');
   }
+
+  // getting the album's cover photo picture
+  getLambumsCoverPhotoPicture(coverPhotoID:string){
+    console.log(coverPhotoID);
+    return this.fb.api('/'+coverPhotoID+'?fields=picture');
+  }
+
 logOut() {
   this.fb.logout().then(() => {
     localStorage.removeItem('currentUserFB');
