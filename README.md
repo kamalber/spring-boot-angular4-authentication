@@ -1,5 +1,5 @@
-# AngularSocialAuth     
-# the app still in the development mode
+# AngularSocialAuth    
+the app still in the development mode
 this is the front end part  of the java/ spring challenge 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
