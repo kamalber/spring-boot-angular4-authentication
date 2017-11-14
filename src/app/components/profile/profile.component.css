@@ -68,4 +68,5 @@ body, html {
   height: 100%;
   background-repeat: no-repeat;
   background-image:none;
+  padding: 0;
 }

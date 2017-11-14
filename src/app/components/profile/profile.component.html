@@ -1,5 +1,22 @@
 
 <!-- Page Content -->
+<!-- main app container -->
+<nav  class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">facebook application</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a>Home</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+      <li><a href="#"><span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container">
 
   <!-- Jumbotron Header -->
@@ -8,45 +25,42 @@
     <p class="lead">connect your facebook account so that you can load your photos from all albums and export them to cloud <br>
       your data is safe and secured we put our focus on security first , so don't worry
     </p>
-    <button *ngIf="currentFbUser" class="loginBtn loginBtn--facebook" (click)="loginWithFacebook()">
+    <div class="row">
+
+    <button  class="loginBtn loginBtn--facebook" (click)="loginWithFacebook()">
       Connect Facebook
     </button>
 
-    <button *ngIf="currentFbUser" class="loginBtn loginBtn--facebook" (click)="getAlbums()">
+    <button class="col-lg-offset-4 loginBtn loginBtn--facebook" (click)="getAlbums()">
       Load my Albums
     </button>
+
+    </div>
   </header>
-  <button class="btn btn-danger" (click)="logOut()">
-    log out
-  </button>
+
 </div>
 
 <div class="container">
-  <div class="well well-sm">
-    <strong>Display</strong>
-    <div class="btn-group">
-      <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-      class="glyphicon glyphicon-th"></span>Grid</a>
+  <div class="well well-sm center-block">
+
+    <div class="btn-group text-center">
+     <a href="#" id="grid" class="btn btn-default btn-sm"><span
+      class="glyphicon glyphicon-th"></span> <strong>Displaying my albums in a  </strong> </a>
     </div>
   </div>
   <div id="products" class="row list-group">
-    <div class="item  col-xs-4 col-lg-4" *ngFor="let item of albumsList">
+    <div class="item  col-sm-3" *ngFor="let item of albumsList">
       <div class="thumbnail">
-        <img class="group list-group-image" src="https://graph.facebook.com/v2.11/{{item.cover_photo.id}}?access_token=EAAbApOAVXFABADQw1tRSybb1XdJeSCakZAEqsZCSffsQ5NTjbZAqEIrwLzJPrimPU95YnB0kr9MWPIlJxBgBuAkAtIQrrCiedLNvVMCkx3ZBJRQwTnsv6btRuRZCj3QqwmIGnfygsdh2CBq0KZB9UvnaZCDtlEBA7baz0JvCHkMW1J5yn49NOe7gAGKCWBnI46xNmjcYO7JvgZDZD&debug=all&format=json&method=get&pretty=0&suppress_http_code=1"
-             alt="" />
+        <img class="group list-group-image" src="{{item.picture}}" >
         <div class="caption">
           <h4 class="group inner list-group-item-heading">
             {{item.name}}</h4>
           <p class="group inner list-group-item-text">
             {{item.created_time}}
           <div class="row">
+
             <div class="col-xs-12 col-md-6">
-              <p class="lead">
-                $21.000</p>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
+              <a class="btn btn-primary" href="http://www.jquery2dotnet.com">View Album</a>
             </div>
           </div>
         </div>
@@ -54,8 +68,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 
