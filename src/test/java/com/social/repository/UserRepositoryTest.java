@@ -30,7 +30,6 @@ public class UserRepositoryTest {
 
 	@Test
 	public void testSave() {
-
 		User user = new User();
 		user.setUsername("user.user");
 		user.setFullName("kamalbberriga");
@@ -42,9 +41,20 @@ public class UserRepositoryTest {
 		assertThat(testUser.getFullName()).isEqualTo(user.getFullName());
 	}
 
-	@Test
-	public void testUpdate() {
-		fail("Not yet implemented"); // TODO
-	}
+
+	// test method for the findOneByUsername
+    @Test
+    public void findOneByUsername() {
+    	User user = new User();
+		user.setUsername("user.user");
+		user.setFullName("kamalberriga");
+        entityManager.persist(user);
+
+        User testUser = userRepository.findOneByUsername(user.getUsername());
+		// then
+		assertThat(testUser.getUsername()).isEqualTo(user.getUsername());
+    }
+	
+	
 
 }
