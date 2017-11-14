@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 ### installing the node module :
- use the following command in the project folder 'npm install --build-from-source'    [NPM] https://www.npmjs.com/
+ use the following command in the project folder `npm install --build-from-source`  [NPM] https://www.npmjs.com/
 
 ### runin the server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
