@@ -4,10 +4,10 @@
 <nav  class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">facebook application</a>
+      <a class="navbar-brand" [routerLink]="['/home']" >facebook application</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a>Home</a></li>
+      <li class="active" [routerLink]="['/home']" ><a>Home</a></li>
 
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -28,12 +28,10 @@
     <div class="row">
 
     <button  class="loginBtn loginBtn--facebook" (click)="loginWithFacebook()">
-      Connect Facebook
+     Link your facebook account
     </button>
 
-    <button class="col-lg-offset-4 loginBtn loginBtn--facebook" (click)="getAlbums()">
-      Load my Albums
-    </button>
+
 
     </div>
   </header>
@@ -45,7 +43,7 @@
 
     <div class="btn-group text-center">
      <a href="#" id="grid" class="btn btn-default btn-sm"><span
-      class="glyphicon glyphicon-th"></span> <strong>Displaying my albums in a  </strong> </a>
+      class="glyphicon glyphicon-th"></span> <strong>Displaying my albums  </strong> </a>
     </div>
   </div>
   <div id="products" class="row list-group">
@@ -60,7 +58,7 @@
           <div class="row">
 
             <div class="col-xs-12 col-md-6">
-              <a class="btn btn-primary" href="http://www.jquery2dotnet.com">View Album</a>
+              <a class="btn btn-primary" >View Album</a>
             </div>
           </div>
         </div>

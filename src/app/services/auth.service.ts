@@ -14,8 +14,10 @@ export class AuthService {
     // creating base64 encoded String from user name and password
     var base64Credential: string = btoa( user.username+ ':' + user.password);
     headers.append("Authorization", "Basic " + base64Credential);
+
     let options = new RequestOptions();
     options.headers=headers;
+
     return this.http.get("http://localhost:8080/account/login" ,   options)
       .map((response: Response) => {
       // login successful if there's a jwt token in the response
