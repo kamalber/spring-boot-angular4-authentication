@@ -49,7 +49,7 @@ export class FacebookCustomService {
   }
 
   // getting the album's cover photo picture
-  getLambumsCoverPhotoPicture(coverPhotoID: string) {
+  getaAlbumsCoverPhotoPicture(coverPhotoID: string) {
     return this.fb.api('/' + coverPhotoID + '/picture?type=normal&access_token=' + this.token);
   }
 

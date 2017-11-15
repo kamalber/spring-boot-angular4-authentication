@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
     loadedAlbum.name = albumObj.name;
     loadedAlbum.created_time = albumObj.created_time;
 
-    this.facebookService.getLambumsCoverPhotoPicture(albumObj.cover_photo.id).then((ress) => {
+    this.facebookService.getaAlbumsCoverPhotoPicture(albumObj.cover_photo.id).then((ress) => {
       loadedAlbum.picture = ress.data.url;
 
       this.albumsList.push(loadedAlbum);
