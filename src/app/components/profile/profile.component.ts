@@ -6,7 +6,6 @@ import {FacebookCustomService} from "../../services/facebook-custom.service";
 import {FacebookUser} from "../../model/mode.FacebookUser";
 import {Album} from "../../model/model.album";
 
-import {Modal} from "ngx-modialog";
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +18,7 @@ export class ProfileComponent implements OnInit {
   currentFbUser: FacebookUser;
   albumsList: Array<Album> = new Array();
 
-  constructor(public modal: Modal,public authService: AuthService, public router: Router, private facebookService: FacebookCustomService) {
+  constructor(public authService: AuthService, public router: Router, private facebookService: FacebookCustomService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.currentFbUser = JSON.parse(localStorage.getItem('currentUserFB'));
 
