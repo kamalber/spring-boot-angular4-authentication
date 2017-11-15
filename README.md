@@ -8,6 +8,7 @@ This project is based on the [Spring Boot](http://projects.spring.io/spring-boot
 - Spring Data (jpa/Hibernate & MySQL)
 - Spring security
 - Spring MVC (Tomcat)
+-Junit4
 
 ## Installation 
 The project is created with Maven, so you just need to import it to your IDE(Eclipse,..) and build the project to resolve the dependencies
