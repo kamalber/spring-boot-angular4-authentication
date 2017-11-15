@@ -54,6 +54,15 @@ public  class User implements UserDetails{
 	 */
     private String fullName;
 
+    public User(){
+    	
+    }
+    
+    public User(String username,String password,String fullName){
+    	this.username=username;
+    	this.password= password;
+    	this.fullName=fullName;
+    }
 	@JsonIgnore
 	@Override
 	public boolean isEnabled() {
