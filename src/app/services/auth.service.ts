@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions,Response} from '@angular/http';
 import {User} from "../model/model.user";
 import 'rxjs/add/operator/map';
 import {FacebookCustomService} from "./facebook-custom.service";
+import {AppComponent} from "../app.component";
 @Injectable()
 export class AuthService {
   constructor(public http: Http, public facebookService:FacebookCustomService ) { }
@@ -18,7 +19,7 @@ export class AuthService {
     let options = new RequestOptions();
     options.headers=headers;
 
-    return this.http.get("http://localhost:8080/account/login" ,   options)
+    return this.http.get(AppComponent.API_URL+"/account/login" ,   options)
       .map((response: Response) => {
       // login successful if there's a jwt token in the response
       let user = response.json().principal;// the returned user object is a principal object
@@ -31,7 +32,7 @@ export class AuthService {
 
   logOut() {
     // remove user from local storage to log user out
-    return this.http.post("http://localhost:8080/logout",{})
+    return this.http.post(AppComponent.API_URL+"logout",{})
       .map((response: Response) => {
         this.facebookService.logOut();
         localStorage.removeItem('currentUser');
