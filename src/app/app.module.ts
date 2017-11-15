@@ -16,7 +16,6 @@ import {FacebookCustomService} from "./services/facebook-custom.service";
 import {UrlPermission} from "./urlPermission/url.permission";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

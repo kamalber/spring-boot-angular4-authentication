@@ -53,6 +53,11 @@ export class FacebookCustomService {
     return this.fb.api('/' + coverPhotoID + '/picture?type=normal&access_token=' + this.token);
   }
 
+  // getting the album's photos
+  getAlbumsPhotos(albumID:string){
+    return this.fb.api('/' + albumID + '/photos?fields=id,created_time,picture,url&access_token=' + this.token);
+  }
+
   logOut() {
     this.fb.logout().then(() => {
       localStorage.removeItem('currentUserFB');

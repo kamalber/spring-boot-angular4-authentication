@@ -2,10 +2,11 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../model/model.user";
 import {Router} from "@angular/router";
-import {LoginResponse} from "ngx-facebook";
 import {FacebookCustomService} from "../../services/facebook-custom.service";
 import {FacebookUser} from "../../model/mode.FacebookUser";
 import {Album} from "../../model/model.album";
+
+import {Modal} from "ngx-modialog";
 
 @Component({
   selector: 'app-profile',
@@ -18,10 +19,13 @@ export class ProfileComponent implements OnInit {
   currentFbUser: FacebookUser;
   albumsList: Array<Album> = new Array();
 
-  constructor(public authService: AuthService, public router: Router, private facebookService: FacebookCustomService) {
+  constructor(public modal: Modal,public authService: AuthService, public router: Router, private facebookService: FacebookCustomService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.currentFbUser = JSON.parse(localStorage.getItem('currentUserFB'));
+
   }
+
+
 
 
   ngOnInit() {
@@ -46,7 +50,6 @@ export class ProfileComponent implements OnInit {
     }).catch((error: any) => console.error(error));
   }
 
-
 // this method help creating an album object from the retrieve user's albums
   private retrieveAlbum(albumObj) {
     let loadedAlbum: Album = new Album();
@@ -58,6 +61,13 @@ export class ProfileComponent implements OnInit {
       loadedAlbum.picture = ress.data.url;
 
       this.albumsList.push(loadedAlbum);
+    }).catch((error: any) => console.error(error));
+  }
+
+
+  // getting the album's photos
+  getAlbumsPhotos(albumID: string) {
+    this.facebookService.getAlbumsPhotos(albumID).then((ress) => {
     }).catch((error: any) => console.error(error));
   }
 
