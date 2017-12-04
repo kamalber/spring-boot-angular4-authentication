@@ -1,0 +1,9 @@
+{
+  "rulesDirectory": [
+    "node_modules/codelyzer"
+  ],
+  "rules": {
+    "no-duplicate-variable": true,
+    "no-unused-variable": true
+  }
+}
