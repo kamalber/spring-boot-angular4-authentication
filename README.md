@@ -1,6 +1,6 @@
 # spring-boot & angular4 authentication application
 - This project is a simple secured authentication of an Angular4 frontend application with a simple Spring Boot backend API with Spring  Security.
-# waht you will learn 
+# what you will learn 
 - secure your rest api using spring security with spring boot 
 - build a stateless authentication
  
