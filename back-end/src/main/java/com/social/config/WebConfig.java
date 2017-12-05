@@ -28,8 +28,6 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	AppUserDetailsService appUserDetailsService;
-	@Autowired
-    private HttpLogoutSuccessHandler logoutSuccessHandler;
 
 	// This method is for overriding the default AuthenticationManagerBuilder.
 	// We can specify how the user details are kept in the application. It may
@@ -75,7 +73,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		.logout()
         .permitAll()
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
-        .logoutSuccessHandler(logoutSuccessHandler).and()
+        .and()
 		// enabling the basic authentication
 		.httpBasic().and()
 		// configuring the session as state less. Which means there is
