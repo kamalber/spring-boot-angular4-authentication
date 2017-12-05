@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.social</groupId>
-	<artifactId>springBoot-socialAuth</artifactId>
+	<artifactId>springBoot-angular4-auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springBoot-socialAuth</name>
+	<name>springBoot-angular4-authentication</name>
 	<description>authentication api</description>
 
 	<parent>
