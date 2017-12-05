@@ -1,6 +1,5 @@
-# springBoot-social-auth
+# springBoot authentication
  - this is the back end layer of the app using spring boot 
- - you cant get the front end part from here : https://github.com/kamalber/AngularSocialAuth
  
 ## Idea of the app 
  - this is a secure api using spring-security,
