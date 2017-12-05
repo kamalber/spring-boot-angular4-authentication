@@ -20,14 +20,10 @@
   <!-- Jumbotron Header -->
   <header class="jumbotron my-4">
     <h1 class="display-3">  <strong>{{currentUser.fullName}}</strong>, Welcome to your app </h1>
-    <p class="lead">connect your facebook account so that you can load your photos from all albums and export them to cloud <br>
-      your data is safe and secured we put our focus on security first , so don't worry
+    <p class="lead"> welcome to your profile
     </p>
     <div class="row">
 
-    <button  class="loginBtn loginBtn--facebook" (click)="loginWithFacebook()">
-     Link your facebook account
-    </button>
 
 
 
@@ -36,34 +32,6 @@
 
 </div>
 
-<div class="container">
-  <div class="well well-sm center-block">
-
-    <div class="btn-group text-center">
-     <a href="#" id="grid" class="btn btn-default btn-sm"><span
-      class="glyphicon glyphicon-th"></span> <strong>Displaying my albums  </strong> </a>
-    </div>
-  </div>
-  <div id="products" class="row list-group">
-    <div class="item  col-sm-3" *ngFor="let item of albumsList">
-      <div class="thumbnail">
-        <img class="group list-group-image" src="{{item.picture}}" >
-        <div class="caption">
-          <h4 class="group inner list-group-item-heading">
-            {{item.name}}</h4>
-          <p class="group inner list-group-item-text">
-            {{item.created_time}}
-          <div class="row">
-
-            <div class="col-xs-12 col-md-6">
-              <a class="btn btn-primary" >View Album</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

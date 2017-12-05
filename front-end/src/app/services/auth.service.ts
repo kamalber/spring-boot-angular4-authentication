@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions,Response} from '@angular/http';
 import {User} from "../model/model.user";
 import 'rxjs/add/operator/map';
-import {FacebookCustomService} from "./facebook-custom.service";
 import {AppComponent} from "../app.component";
 @Injectable()
 export class AuthService {
-  constructor(public http: Http, public facebookService:FacebookCustomService ) { }
+  constructor(public http: Http) { }
 
   public logIn(user: User){
 
@@ -34,7 +33,6 @@ export class AuthService {
     // remove user from local storage to log user out
     return this.http.post(AppComponent.API_URL+"logout",{})
       .map((response: Response) => {
-        this.facebookService.logOut();
         localStorage.removeItem('currentUser');
       });
 
