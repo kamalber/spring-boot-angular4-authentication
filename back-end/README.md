@@ -1,9 +1,10 @@
 # springBoot-social-auth
- - spring boot & angular 4 application , this is the back end layer of the app using spring boot 
+ - this is the back end layer of the app using spring boot 
  - you cant get the front end part from here : https://github.com/kamalber/AngularSocialAuth
+ 
 ## Idea of the app 
- - simple user registration / secure authentication
- - it link your facebook account to load your albums photos
+ - this is a secure api using spring-security,
+ 
 ## What's inside 
 This project is based on the [Spring Boot](http://projects.spring.io/spring-boot/) project and uses these packages :
 - Maven
